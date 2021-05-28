@@ -9,11 +9,11 @@ export const fetchBooks = (searchPattern) => async dispatch => {
     const res = await axios.get(`http://openlibrary.org/search.json?q=${searchPattern}`);
 
     dispatch({
-      type: FETCH_BOOK,
-      payload: res.data
+      type: FETCH_BOOKS,
+      payload: res.data.docs
     });
 
-    console.log(res.data);
+    console.log(res.data.docs);
 
 
   } catch (error) {

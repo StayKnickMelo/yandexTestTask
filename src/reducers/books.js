@@ -13,6 +13,12 @@ const initalState = {
 const booksReducer = (state = initalState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case FETCH_BOOKS:
+      return {
+        ...state,
+        books: payload,
+        loading: false
+      }
     default:
       return state
   }

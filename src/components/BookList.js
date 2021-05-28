@@ -1,17 +1,29 @@
 import React from 'react';
 import BookItem from './BookItem';
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
-const BookList = () => {
+
+const BookList = ({ books }) => {
   return (
     <div className="books-container">
-      {arr.map(book => (
-      <BookItem key={book} />
-    ))}
+      {books.length > 0 ? books.map(book => (
+        <BookItem key={book.key} book={book} />
+      )) :
+        <h1>Loading</h1>}
+
     </div>
 
   )
+};
+
+BookList.propTypes = {
+  books: PropTypes.array.isRequired,
 }
 
-export default BookList
+const mapStateToProps = (state) => ({
+  books: state.books.books
+})
+
+export default connect(mapStateToProps)(BookList)

@@ -1,10 +1,14 @@
 import React from 'react';
 
-const BookItem = () => {
+const BookItem = ({ book }) => {
+
+  const {
+    cover_i
+  } = book;
   return (
     <div className="card">
       <div className="cover">
-        <img src="https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt=""  />
+        <img src={`http://covers.openlibrary.org/b/id/${cover_i}.jpg`} alt="book's cover" />
       </div>
 
       <div className="info">
