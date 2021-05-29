@@ -1,15 +1,11 @@
 import {
-  FETCH_BOOK,
+  LOAD_BOOK,
   FETCH_BOOKS,
-  // SEARCHING,
-  // STOP_SEARCHING
 } from '../actions/types';
 
 const initalState = {
   books: [],
   book: null,
-  // loading: true,
-  // isSearching: false
 };
 
 
@@ -20,18 +16,12 @@ const booksReducer = (state = initalState, action) => {
       return {
         ...state,
         books: payload,
-        // loading: false
       }
-    // case SEARCHING:
-    //   return {
-    //     ...state,
-    //     isSearching: true
-    //   }
-    // case STOP_SEARCHING:
-    //   return {
-    //     ...state,
-    //     isSearching: false
-    //   }
+    case LOAD_BOOK:
+      return {
+        ...state,
+        book: payload
+      }
     default:
       return state
   }

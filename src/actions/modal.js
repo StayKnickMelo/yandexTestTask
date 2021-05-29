@@ -10,7 +10,6 @@ export const showModel = () => dispatch => {
   });
 };
 export const closeModel = () => dispatch => {
-  console.log('book closed')
   dispatch({
     type: CLOSE_MODAL
   });

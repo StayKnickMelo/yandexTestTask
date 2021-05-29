@@ -1,30 +1,39 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { closeModel } from '../actions/modal';
 
-
-
-
-const BookItemModal = ({ modal, closeModel }) => {
+const BookItemModal = ({ modal, closeModel, book }) => {
 
   return (
-
-    modal ?
+    modal && book !== null ?
       <div className="book-modal" >
         <div className="book-modal-container">
           <div onClick={() => closeModel(false)} className="closeBtn">&times;</div>
-          <div className="cover">
-            <img src='/No_Cover.jpg' alt="book's cover" />
+          <div className="book-modal-cover">
+            <img src={book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}.jpg`
+              :
+              `/No_cover.jpg`} alt="book's cover" />
           </div>
-
-          <div className="info">
-            <p>Title: Title</p>
-            <p>Author: Author</p>
-            <p>First Published: Time</p>
-          </div>
+          <ul className="book-modal-info">
+            <li>
+              Title: {book.title}
+            </li>
+            {book.author_name && (
+              <li>
+                Author: {book.author_name}
+              </li>
+            )}
+            {book.publisher && (
+              <li>
+                Publisher: {book.publisher[0]}
+              </li>
+            )}
+            <li>
+              ISBN: {book.isbn[0]}
+            </li>
+          </ul>
         </div>
-
       </div>
       :
       null
@@ -36,7 +45,8 @@ BookItemModal.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  modal: state.modal
-})
+  modal: state.modal,
+  book: state.books.book
+});
 
-export default connect(mapStateToProps, { closeModel })(BookItemModal)
+export default connect(mapStateToProps, { closeModel })(BookItemModal);

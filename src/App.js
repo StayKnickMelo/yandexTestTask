@@ -14,8 +14,9 @@ const App = () => {
         <div className="container">
           <SearchBar />
           <BookList />
+          <BookItemModal />
         </div>
-        <BookItemModal />
+        {/* <BookItemModal /> */}
       </Fragment>
     </Provider>
 

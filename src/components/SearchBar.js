@@ -8,18 +8,15 @@ import PropTypes from 'prop-types'
 const SearchBar = ({ fetchBooks }) => {
 
   const [searchPattern, setSearchPattern] = useState('');
-  // const [isSearching, setIsSearching] = useState(false);
 
   const debouncedSearchTerm = useDebounce(searchPattern, 1000);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      // searching(true);
       fetchBooks(debouncedSearchTerm)
-      // searchSuccess(false);
-      // setResults(results);
     }
 
+    // eslint-disable-next-line
   }, [debouncedSearchTerm])
 
   const onChange = (e) => {
