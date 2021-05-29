@@ -121,6 +121,7 @@ body {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
+  /* display: none; */
 }
 
 .book-modal-container {

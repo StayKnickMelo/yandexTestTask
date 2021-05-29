@@ -1,6 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { showModel } from '../actions/modal';
+import PropTypes from 'prop-types';
 
-const BookItem = ({ book }) => {
+
+const BookItem = ({ book, showModel }) => {
+
+  const onClick = () => {
+    showModel(true);
+  };
 
   const {
     cover_i,
@@ -12,7 +20,7 @@ const BookItem = ({ book }) => {
 
   } = book;
   return (
-    <div className="book">
+    <div className="book" onClick={onClick}>
       <div className="book-link">
         Details...
       </div>
@@ -32,4 +40,9 @@ const BookItem = ({ book }) => {
   )
 }
 
-export default BookItem
+BookItem.propTypes = {
+  showModel: PropTypes.func.isRequired,
+  book: PropTypes.object.isRequired,
+}
+
+export default connect(null, { showModel })(BookItem)
