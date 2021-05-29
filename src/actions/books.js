@@ -1,6 +1,8 @@
 import {
   FETCH_BOOK,
-  FETCH_BOOKS
+  FETCH_BOOKS,
+  // SEARCHING,
+  // STOP_SEARCHING
 } from './types';
 import axios from 'axios';
 
@@ -19,4 +21,18 @@ export const fetchBooks = (searchPattern) => async dispatch => {
   } catch (error) {
     console.error(error)
   }
-}
+};
+
+// export const searching = () => dispatch => {
+
+//   dispatch({
+//     type: SEARCHING
+//   });
+
+// };
+
+// export const searchSuccess = () => dispatch => {
+//   dispatch({
+//     type: STOP_SEARCHING
+//   })
+// }
