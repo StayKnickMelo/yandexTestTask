@@ -2,7 +2,9 @@ import {
   LOAD_BOOK,
   FETCH_BOOKS,
 } from './types';
+
 import axios from 'axios';
+axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export const fetchBooks = (searchPattern) => async dispatch => {
   try {
